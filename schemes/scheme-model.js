@@ -34,8 +34,8 @@ function findSteps(scheme_id) {
     .orderBy('step_number', 'asc');
 }
 
-async function add({ scheme_name }) {
-  const [id] = await db('schemes').insert({ scheme_name });
+async function add(scheme) {
+  const [id] = await db('schemes').insert(scheme);
 
   return findById(id);
 }
