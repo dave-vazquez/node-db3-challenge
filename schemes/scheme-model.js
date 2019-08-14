@@ -46,14 +46,12 @@ async function addStep(step, scheme_id) {
   return findStep(id);
 }
 
-async function update({ scheme_name }, id) {
-  const [updatedID] = await db('schemes')
+async function update(changes, id) {
+  await db('schemes')
     .where({ id })
-    .update({ scheme_name });
+    .update(changes);
 
-  console.log('updatedID', updatedID);
-
-  return findById(updatedID);
+  return findById(id);
 }
 
 async function remove(id) {
